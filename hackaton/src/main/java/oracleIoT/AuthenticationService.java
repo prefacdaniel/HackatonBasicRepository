@@ -39,7 +39,7 @@ public class AuthenticationService {
 
 		JSONObject payload = new JSONObject();
 		payload.put("iss", "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber");
-		payload.put("exp", 1541892694L);
+		payload.put("exp", 1541893694L);
 		payload.put("aud", "oracle/iot/oauth2/token");
 
 		String key = "acubv24kbimsj";
@@ -91,13 +91,13 @@ public class AuthenticationService {
 		return sha256_HMAC.doFinal(data.getBytes("UTF-8"));
 	}
 
-	public static String signSHA256RSA(String data, String privateKey) throws Exception {
+	public static String signSHA256RSA(String data, byte[] encodedPrivateKey) throws Exception {
 
-		String realPK = privateKey.replaceAll("-----END PRIVATE KEY-----", "").replaceAll("-----BEGIN PRIVATE KEY-----", "")
-				.replaceAll("\n", "");
-
-		byte[] keyByte = Base64.getDecoder().decode(realPK);
-		PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyByte);
+//		String realPK = privateKey.replaceAll("-----END PRIVATE KEY-----", "").replaceAll("-----BEGIN PRIVATE KEY-----", "")
+//				.replaceAll("\n", "");
+//
+//		byte[] keyByte = Base64.getDecoder().decode(realPK);
+		PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(encodedPrivateKey);
 
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 		Signature privateSignature = Signature.getInstance("SHA256withRSA");

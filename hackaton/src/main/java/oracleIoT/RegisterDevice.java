@@ -77,7 +77,7 @@ public class RegisterDevice {
         httpPost.setEntity(httpEntity);
         try {
             HttpResponse httpResponse = httpclient.execute(httpPost);
-            System.out.println( EntityUtils.toString(httpResponse.getEntity()));
+            System.out.println(EntityUtils.toString(httpResponse.getEntity()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,16 +87,16 @@ public class RegisterDevice {
 
     public static void main(String[] args) throws Exception {
         //RegisterDevice registerDevice = new RegisterDevice();
-       // registerDevice.registerDevice();
-    	
-    	AuthenticationService auth = new AuthenticationService();
-    	String token = auth.authenticate();
-    	System.out.println(token);
+        // registerDevice.registerDevice();
+
+        AuthenticationService auth = new AuthenticationService();
+        String token = auth.authenticate();
+        System.out.println(token);
 
         DirectActivationService directActivationService = new DirectActivationService();
         KeyPair keyPair = directActivationService.newKeyPair();
 
-        directActivationService.activateDevice(token,"87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber","acubv24kbimsj", new String(keyPair.getPublic().getEncoded()), new String(keyPair.getPrivate().getEncoded()));
+        directActivationService.activateDevice(token, "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj",keyPair.getPublic().getEncoded(), keyPair.getPrivate().getEncoded());
 
     }
 }
