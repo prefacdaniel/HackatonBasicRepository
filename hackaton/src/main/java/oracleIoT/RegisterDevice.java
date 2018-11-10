@@ -3,8 +3,6 @@ package oracleIoT;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -12,7 +10,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import sun.misc.IOUtils;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -92,7 +89,8 @@ public class RegisterDevice {
        // registerDevice.registerDevice();
     	
     	AuthenticationService auth = new AuthenticationService();
-    	auth.authenticate();
+    	String token = auth.authenticate();
+    	System.out.println(token);
 
     }
 }
