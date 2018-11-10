@@ -83,7 +83,7 @@ public class AuthenticationService {
 		return token;
 	}
 
-	public byte[] encode(String key, String data) throws Exception {
+	public static byte[] encode(String key, String data) throws Exception {
 		Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
 		SecretKeySpec secret_key = new SecretKeySpec(key.getBytes("UTF-8"), "HmacSHA256");
 		sha256_HMAC.init(secret_key);
@@ -91,9 +91,9 @@ public class AuthenticationService {
 		return sha256_HMAC.doFinal(data.getBytes("UTF-8"));
 	}
 
-	private static String signSHA256RSA(String input, String strPk) throws Exception {
+	public static String signSHA256RSA(String data, String privateKey) throws Exception {
 
-		String realPK = strPk.replaceAll("-----END PRIVATE KEY-----", "").replaceAll("-----BEGIN PRIVATE KEY-----", "")
+		String realPK = privateKey.replaceAll("-----END PRIVATE KEY-----", "").replaceAll("-----BEGIN PRIVATE KEY-----", "")
 				.replaceAll("\n", "");
 
 		byte[] keyByte = Base64.getDecoder().decode(realPK);
@@ -103,7 +103,7 @@ public class AuthenticationService {
 		Signature privateSignature = Signature.getInstance("SHA256withRSA");
 
 		privateSignature.initSign(keyFactory.generatePrivate(spec));
-		privateSignature.update(input.getBytes("UTF-8"));
+		privateSignature.update(data.getBytes("UTF-8"));
 
 		byte[] signature = privateSignature.sign();
 		return Base64.getEncoder().encodeToString(signature);

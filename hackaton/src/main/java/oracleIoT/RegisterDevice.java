@@ -12,6 +12,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.KeyPair;
 import java.util.Base64;
 
 public class RegisterDevice {
@@ -91,6 +92,11 @@ public class RegisterDevice {
     	AuthenticationService auth = new AuthenticationService();
     	String token = auth.authenticate();
     	System.out.println(token);
+
+        DirectActivationService directActivationService = new DirectActivationService();
+        KeyPair keyPair = directActivationService.newKeyPair();
+
+        directActivationService.activateDevice(token,"87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber","acubv24kbimsj", new String(keyPair.getPublic().getEncoded()), new String(keyPair.getPrivate().getEncoded()));
 
     }
 }
