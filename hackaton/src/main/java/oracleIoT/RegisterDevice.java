@@ -87,9 +87,12 @@ public class RegisterDevice {
 
     }
 
-    public static void main(String[] args) {
-        RegisterDevice registerDevice = new RegisterDevice();
-        registerDevice.registerDevice();
+    public static void main(String[] args) throws Exception {
+        //RegisterDevice registerDevice = new RegisterDevice();
+       // registerDevice.registerDevice();
+    	
+    	AuthenticationService auth = new AuthenticationService();
+    	auth.authenticate();
 
     }
 }
