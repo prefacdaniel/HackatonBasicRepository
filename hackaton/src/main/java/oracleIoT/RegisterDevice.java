@@ -13,6 +13,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class RegisterDevice {
@@ -85,6 +87,15 @@ public class RegisterDevice {
 
     }
 
+
+    public static KeyPair newKeyPair() throws NoSuchAlgorithmException {
+        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+
+        /* initialize with keySize: typically 2048 for RSA */
+        kpg.initialize(2048);
+        return kpg.generateKeyPair();
+    }
+
     public static void main(String[] args) throws Exception {
         //RegisterDevice registerDevice = new RegisterDevice();
         // registerDevice.registerDevice();
@@ -93,10 +104,11 @@ public class RegisterDevice {
         String token = auth.authenticate();
         System.out.println(token);
 
-        DirectActivationService directActivationService = new DirectActivationService();
-        KeyPair keyPair = directActivationService.newKeyPair();
+        KeyPair keyPair = newKeyPair();
 
-        directActivationService.activateDevice(token, "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj",keyPair.getPublic().getEncoded(), keyPair.getPrivate().getEncoded());
+
+        DirectActivationService directActivationService = new DirectActivationService("87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj","urn:test:hackapp", keyPair.getPrivate(), keyPair.getPublic(), token);
+        directActivationService.execute();
 
     }
 }
