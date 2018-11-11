@@ -26,7 +26,13 @@ public class AuthenticationService {
 
 	public static final String URL = "https://secitc5iotjls-secitc.gbcom-south-1.oraclecloud.com/iot/api/v2/oauth2/token";
 
-	public String authenticate() throws Exception {
+	private byte[] privateKey;
+
+	public void setPrivateKey(byte[] privateKey) {
+		this.privateKey = privateKey;
+	}
+
+	public String authenticate(boolean isActivationToken) throws Exception {
 		HttpClient httpclient = HttpClients.createDefault();
 
 		JSONObject header = new JSONObject();
@@ -34,8 +40,13 @@ public class AuthenticationService {
 		header.put("typ", "JWT");
 
 		JSONObject payload = new JSONObject();
-		payload.put("iss", "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber");
-		payload.put("exp", 1541951550L);
+
+		String iss = "87A70FF4-65CE-4914-AA99-5E2EC002A19E";
+		if(isActivationToken) {
+			iss = "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber";
+		}
+		payload.put("iss", iss);
+		payload.put("exp", 1541950801L);
 		payload.put("aud", "oracle/iot/oauth2/token");
 
 		String key = "acubv24kbimsj";
@@ -45,7 +56,12 @@ public class AuthenticationService {
 
 		String data = headerEncoded + "." + payloadEncoded;
 
-		String signatureEncoded = Base64.getUrlEncoder().encodeToString(sha256HMAC(key, data));
+		String signatureEncoded = null;
+		if(isActivationToken) {
+			signatureEncoded = Base64.getUrlEncoder().encodeToString(sha256HMAC(key, data));
+		}else {
+			signatureEncoded = signSHA256RSA(data, privateKey);
+		}
 
 		System.out.println("Signature encoded: " + signatureEncoded);
 
@@ -58,7 +74,13 @@ public class AuthenticationService {
 		nvps.add(new BasicNameValuePair("client_assertion_type",
 				"urn:ietf:params:oauth:client-assertion-type:jwt-bearer"));
 		nvps.add(new BasicNameValuePair("client_assertion", clientAssertion));
-		nvps.add(new BasicNameValuePair("scope", "oracle/iot/activation"));
+
+		String scope = "";
+		if(isActivationToken) {
+			scope = "oracle/iot/activation";
+		}
+
+		nvps.add(new BasicNameValuePair("scope", scope));
 
 		HttpPost httpPost = new HttpPost(URL);
 		httpPost.setHeader("Accept", "application/json");

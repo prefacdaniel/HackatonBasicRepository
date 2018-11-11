@@ -83,8 +83,6 @@ public class RegisterDevice {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 
@@ -101,7 +99,7 @@ public class RegisterDevice {
         // registerDevice.registerDevice();
 
         AuthenticationService auth = new AuthenticationService();
-        String token = auth.authenticate();
+        String token = auth.authenticate(false);
         System.out.println(token);
 
         KeyPair keyPair = newKeyPair();
