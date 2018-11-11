@@ -16,16 +16,28 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.UUID;
+
 
 public class RegisterDevice {
 
 
     private final static String ENDPOINT_URL = "https://secitc5iotjls-secitc.gbcom-south-1.oraclecloud.com/iot/api/v2/devices";
 
+    private String deviceID;
+    private String secret;
+    private String hardwareID;
+
+    public RegisterDevice(String deviceID, String hardwareID, String secret) {
+        this.deviceID = deviceID;
+        this.hardwareID = hardwareID;
+        this.secret = secret;
+    }
 
     public String generateJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("serialNumber", "NewRandomDeviceSerialNumber");
+        jsonObject.put("serialNumber", deviceID);
+        jsonObject.put("hardwareId", hardwareID);
 //        jsonObject.put("activationTimeAsString", Long.toString(System.currentTimeMillis()));
 //        jsonObject.put("partnerName", "partnerName");
 //        jsonObject.put("softwareRevision", "revision");
@@ -38,7 +50,7 @@ public class RegisterDevice {
 //        jsonObject.put("hardwareRevision", "A string representing the hardware revision.");
 //        jsonObject.put("directlyConnectedOwnerId", "6b3537ac34fd-3ed5");
 //        jsonObject.put("state", "UNKNOWN");
-        jsonObject.put("sharedSecret", "mySharedSecret");
+        jsonObject.put("sharedSecret", secret);
 //        jsonObject.put("softwareVersion", "v1.0");
 
 
@@ -95,14 +107,19 @@ public class RegisterDevice {
     }
 
     public static void main(String[] args) throws Exception {
-        //RegisterDevice registerDevice = new RegisterDevice();
-        // registerDevice.registerDevice();
-
-        AuthenticationService auth = new AuthenticationService();
-        String token = auth.authenticate(false);
-        System.out.println(token);
-
+        String deviceID = UUID.randomUUID().toString();
+        String hardwareId = UUID.randomUUID().toString();
+        String deviceSecret = "acubvxvkbimj";
         KeyPair keyPair = newKeyPair();
+
+
+        RegisterDevice registerDevice = new RegisterDevice(deviceID, hardwareId, deviceSecret);
+        registerDevice.registerDevice();
+
+        AuthenticationService auth = new AuthenticationService(deviceID, hardwareId, deviceSecret, keyPair.getPrivate().getEncoded());
+        String token = auth.authenticate(true);
+
+        System.out.println(token);
 
 
         DirectActivationService directActivationService = new DirectActivationService("87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj", "urn:test:hackapp", keyPair.getPrivate(), keyPair.getPublic(), token);
