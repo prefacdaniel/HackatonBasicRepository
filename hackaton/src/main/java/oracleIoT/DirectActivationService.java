@@ -42,9 +42,9 @@ public class DirectActivationService {
     /**
      * Prepare the parameters for direct activation
      *
-     * @param endpointId         device end point id
-     * @param activationSecret   shared secret for activating device
-     * @param urn                device model URN attached to the device while activating
+     * @param endpointId       device end point id
+     * @param activationSecret shared secret for activating device
+     * @param urn              device model URN attached to the device while activating
      */
     public DirectActivationService(String endpointId, String activationSecret, String urn, PrivateKey privateKey, PublicKey publicKey, String authorizationToken) {
         this.endpointId = endpointId;

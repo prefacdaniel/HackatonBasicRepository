@@ -20,6 +20,11 @@ public class MessageSendService {
     private String deviceID;
 
 
+    public MessageSendService(String token, String deviceID) {
+        this.token = token;
+        this.deviceID = deviceID;
+    }
+
     private String generateJson() {
         JSONArray jsonArray = new JSONArray()
                 .put(new JSONObject()
@@ -33,8 +38,8 @@ public class MessageSendService {
                         .put("type", "DATA")
                         .put("properties", new JSONObject())
                         .put("payload", new JSONObject()
-                                .put("format", "urn:format:test:messagedeliverytoapps:format:_608232f1")
-                                .put("data",new JSONObject()
+                                .put("format", "urn:test:hackapp:messagedeliverytoapps:format:_608232f1")
+                                .put("data", new JSONObject()
                                         .put("msgText", "Messages from Pref!!")
                                 )
                         )

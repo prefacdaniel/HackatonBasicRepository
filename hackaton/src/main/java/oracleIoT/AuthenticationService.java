@@ -43,7 +43,11 @@ public class AuthenticationService {
         HttpClient httpclient = HttpClients.createDefault();
 
         JSONObject header = new JSONObject();
-        header.put("alg", "HS256");
+        if (isActivationToken) {
+            header.put("alg", "HS256");
+        } else {
+            header.put("alg", "RS256");
+        }
         header.put("typ", "JWT");
 
         JSONObject payload = new JSONObject();
@@ -52,7 +56,7 @@ public class AuthenticationService {
         if (isActivationToken) {
             iss = activationDeviceID;
         }
-        int expirationTime = (int)((System.currentTimeMillis() + 1800000) / 1000L);
+        int expirationTime = (int) ((System.currentTimeMillis() + 1800000) / 1000L);
 
         payload.put("iss", iss);
         payload.put("exp", expirationTime);
@@ -95,6 +99,7 @@ public class AuthenticationService {
         httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
 
         httpPost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
+
         String token = "";
         try {
             HttpResponse httpResponse = httpclient.execute(httpPost);

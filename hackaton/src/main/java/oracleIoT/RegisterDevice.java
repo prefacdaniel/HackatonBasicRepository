@@ -76,7 +76,7 @@ public class RegisterDevice {
     }
 
 
-    public void registerDevice() {
+    public String registerDevice() {
         HttpClient httpclient = HttpClients.createDefault();
         HttpEntity httpEntity = new StringEntity(generateJson(), ContentType.APPLICATION_JSON);
 
@@ -91,10 +91,16 @@ public class RegisterDevice {
         httpPost.setEntity(httpEntity);
         try {
             HttpResponse httpResponse = httpclient.execute(httpPost);
-            System.out.println(EntityUtils.toString(httpResponse.getEntity()));
+
+            String jsonResponse = EntityUtils.toString(httpResponse.getEntity());
+            System.out.println(jsonResponse);
+
+            JSONObject json = new JSONObject(jsonResponse);
+            return json.getString("id");
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
 
@@ -110,20 +116,43 @@ public class RegisterDevice {
         String deviceID = UUID.randomUUID().toString();
         String hardwareId = UUID.randomUUID().toString();
         String deviceSecret = "acubvxvkbimj";
+        String deviceSecretInBase64 = Base64.getUrlEncoder().encodeToString(deviceSecret.getBytes("UTF-8"));
+
         KeyPair keyPair = newKeyPair();
 
 
-        RegisterDevice registerDevice = new RegisterDevice(deviceID, hardwareId, deviceSecret);
-        registerDevice.registerDevice();
+        RegisterDevice registerDevice = new RegisterDevice(deviceID, hardwareId, deviceSecretInBase64);
+        String id = registerDevice.registerDevice();
 
-        AuthenticationService auth = new AuthenticationService(deviceID, hardwareId, deviceSecret, keyPair.getPrivate().getEncoded());
-        String token = auth.authenticate(true);
+        System.out.println("\nDEVICE CREATED!\n");
 
-        System.out.println(token);
+        AuthenticationService auth = new AuthenticationService(id, hardwareId, deviceSecret, keyPair.getPrivate().getEncoded());
+        String activationToken = auth.authenticate(true);
+
+        System.out.println("\nAUTH TOKEN RECEIVED!\n");
 
 
-        DirectActivationService directActivationService = new DirectActivationService("87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj", "urn:test:hackapp", keyPair.getPrivate(), keyPair.getPublic(), token);
+        DirectActivationService directActivationService
+                = new DirectActivationService(hardwareId,
+                deviceSecret, "urn:test:hackapp",
+                keyPair.getPrivate(),
+                keyPair.getPublic(),
+                activationToken);
+
         directActivationService.execute();
+
+        System.out.println("\nDEVICE ACTIVATED!\n");
+
+
+        String messageToken = auth.authenticate(false);
+
+        System.out.println("\nMESSAGE TOKEN RECEIVED!\n");
+
+        MessageSendService messageSendService = new MessageSendService(messageToken, id);
+        messageSendService.execute();
+
+        System.out.println("\nMESSAGE SENT!\n");
+
 
     }
 }
