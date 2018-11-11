@@ -5,6 +5,7 @@ import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -46,7 +47,9 @@ public class AuthenticationService {
 			iss = "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber";
 		}
 		payload.put("iss", iss);
-		payload.put("exp", 1541950801L);
+		
+		int expirationTime = (int)((System.currentTimeMillis() + 1800000) / 1000L);
+		payload.put("exp", expirationTime);
 		payload.put("aud", "oracle/iot/oauth2/token");
 
 		String key = "acubv24kbimsj";

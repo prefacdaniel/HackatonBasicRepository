@@ -99,7 +99,7 @@ public class RegisterDevice {
         // registerDevice.registerDevice();
 
         AuthenticationService auth = new AuthenticationService();
-        String token = auth.authenticate(false);
+        String token = auth.authenticate(true);
         System.out.println(token);
 
         KeyPair keyPair = newKeyPair();
