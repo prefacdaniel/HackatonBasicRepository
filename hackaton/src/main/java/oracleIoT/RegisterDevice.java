@@ -38,7 +38,7 @@ public class RegisterDevice {
 //        jsonObject.put("hardwareRevision", "A string representing the hardware revision.");
 //        jsonObject.put("directlyConnectedOwnerId", "6b3537ac34fd-3ed5");
 //        jsonObject.put("state", "UNKNOWN");
-//        jsonObject.put("sharedSecret", "mySharedSecret");
+        jsonObject.put("sharedSecret", "mySharedSecret");
 //        jsonObject.put("softwareVersion", "v1.0");
 
 
@@ -107,7 +107,7 @@ public class RegisterDevice {
         KeyPair keyPair = newKeyPair();
 
 
-        DirectActivationService directActivationService = new DirectActivationService("87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj","urn:test:hackapp", keyPair.getPrivate(), keyPair.getPublic(), token);
+        DirectActivationService directActivationService = new DirectActivationService("87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber", "acubv24kbimsj", "urn:test:hackapp", keyPair.getPrivate(), keyPair.getPublic(), token);
         directActivationService.execute();
 
     }

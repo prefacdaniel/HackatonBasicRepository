@@ -35,7 +35,7 @@ public class AuthenticationService {
 
 		JSONObject payload = new JSONObject();
 		payload.put("iss", "87A70FF4-65CE-4914-AA99-5E2EC002A19E-NewRandomDeviceSerialNumber");
-		payload.put("exp", 1541940861L);
+		payload.put("exp", 1541951550L);
 		payload.put("aud", "oracle/iot/oauth2/token");
 
 		String key = "acubv24kbimsj";
