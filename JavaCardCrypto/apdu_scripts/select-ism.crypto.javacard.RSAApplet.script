@@ -1,0 +1,10 @@
+// Applet Selection APDU Script
+//
+// Package:     ism.crypto.javacard
+// Package AID: //aid/0101010101/
+// Applet:      RSAApplet
+// Applet AID:  //aid/0101010101/01
+//
+
+// Select RSAApplet applet
+0x00 0xA4 0x04 0x00 0x06 0x01 0x01 0x01 0x01 0x01 0x01 0x7F;

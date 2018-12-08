@@ -1,0 +1,1726 @@
+// converted by version  [v3.0.5]
+// on Fri Dec 07 23:39:19 EET 2018
+
+.package ism/crypto/javacard {
+	.aid 0x1:0x1:0x1:0x1:0x1;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.6;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.6;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.6;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0x1:0x1:0x1:0x1:0x1:0x1 RSAApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] RSAApplet/tempBuffer;
+		// 1
+		instanceFieldRef byte[] RSAApplet/flags;
+		// 2
+		instanceFieldRef byte[] RSAApplet/rsaPubKey;
+		// 3
+		instanceFieldRef byte[] RSAApplet/rsaPriKey;
+		// 4
+		instanceFieldRef short RSAApplet/rsaPubKeyLen;
+		// 5
+		instanceFieldRef short RSAApplet/rsaPriKeyLen;
+		// 6
+		instanceFieldRef boolean RSAApplet/isRSAPriKeyCRT;
+		// 7
+		instanceFieldRef 2.15 RSAApplet/rsaSignature;
+		// 8
+		instanceFieldRef 1.1 RSAApplet/rsaCipher;
+		// 9
+		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 10
+		staticMethodRef 1.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	1.1;
+
+		// 11
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 12
+		staticMethodRef 0.8.18()V;		// javacard/framework/JCSystem.requestObjectDeletion()V
+		// 13
+		.classRef RSAApplet;
+		// 14
+		staticMethodRef RSAApplet/<init>()V;
+		// 15
+		virtualMethodRef 0.3.2([BSB)V;		// register([BSB)V
+		// 16
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 17
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 18
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 19
+		staticMethodRef RSAApplet/genRsaKeyPair(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 20
+		staticMethodRef RSAApplet/getRsaPubKey(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 21
+		staticMethodRef RSAApplet/getRsaPriKey(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 22
+		staticMethodRef RSAApplet/setRsaPubKey(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 23
+		staticMethodRef RSAApplet/setRsaPriKey(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 24
+		staticMethodRef RSAApplet/rsaSign(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 25
+		staticMethodRef RSAApplet/rsaVerify(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 26
+		staticMethodRef RSAApplet/doRSACipher(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 27
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 28
+		staticMethodRef 2.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 29
+		.classRef 2.9;		// javacard/security/RSAPublicKey
+		// 30
+		virtualMethodRef 1.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 31
+		virtualMethodRef 1.1.5([BSS[BS)S;		// update([BSS[BS)S
+		// 32
+		virtualMethodRef 1.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 33
+		virtualMethodRef 0.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 34
+		.classRef 2.8;		// javacard/security/RSAPrivateKey
+		// 35
+		.classRef 2.7;		// javacard/security/RSAPrivateCrtKey
+		// 36
+		staticMethodRef 0.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 37
+		staticMethodRef RSAApplet/getRsaPriKeyComponent(B[BS)S;
+		// 38
+		staticMethodRef 0.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 39
+		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 40
+		staticMethodRef 0.16.4([BS)S;		// javacard/framework/Util.getShort([BS)S
+		// 41
+		.classRef 2.16;		// javacard/security/KeyPair
+		// 42
+		staticMethodRef 2.16.0(BS)V;		// javacard/security/KeyPair.<init>(BS)V
+		// 43
+		virtualMethodRef 2.16.3()Ljavacard/security/PublicKey;;		// getPublic()Ljavacard/security/PublicKey;
+			.descriptor	Ljavacard/security/PublicKey;	2.3;
+
+		// 44
+		virtualMethodRef 2.16.1()V;		// genKeyPair()V
+		// 45
+		staticMethodRef 0.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 46
+		staticMethodRef 0.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 47
+		virtualMethodRef 2.16.2()Ljavacard/security/PrivateKey;;		// getPrivate()Ljavacard/security/PrivateKey;
+			.descriptor	Ljavacard/security/PrivateKey;	2.2;
+
+		// 48
+		staticMethodRef 2.15.0(BZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	2.15;
+
+		// 49
+		virtualMethodRef 2.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	2.0;
+
+		// 50
+		virtualMethodRef 2.15.6([BSS)V;		// update([BSS)V
+		// 51
+		virtualMethodRef 2.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 52
+		virtualMethodRef 2.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+	}
+
+	.class public RSAApplet 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private byte[] tempBuffer 0;		// [B
+			private byte[] flags 1;		// [B
+			private byte[] rsaPubKey 2;		// [B
+			private byte[] rsaPriKey 3;		// [B
+			private 1.1 rsaCipher 4;		// Ljavacardx/crypto/Cipher;
+			private 2.15 rsaSignature 5;		// Ljavacard/security/Signature;
+			private short rsaPubKeyLen 6;		// S
+			private short rsaPriKeyLen 7;		// S
+			private boolean isRSAPriKeyCRT 8;		// Z
+			private static final byte INS_GEN_RSA_KEYPAIR = 48;		// B
+			private static final byte INS_GET_RSA_PUBKEY = 49;		// B
+			private static final byte INS_GET_RSA_PRIKEY = 50;		// B
+			private static final byte INS_SET_RSA_PUBKEY = 51;		// B
+			private static final byte INS_SET_RSA_PRIKEY = 52;		// B
+			private static final byte INS_RSA_SIGN = 53;		// B
+			private static final byte INS_RSA_VERIFY = 54;		// B
+			private static final byte INS_DO_RSA_CIPHER = 55;		// B
+			private static final short OFF_INS = 0;		// S
+			private static final short OFF_P1 = 1;		// S
+			private static final short OFF_P2 = 2;		// S
+			private static final short OFF_LEN = 3;		// S
+			private static final short FLAGS_SIZE = 5;		// S
+			private static final byte ID_N = 0;		// B
+			private static final byte ID_D = 1;		// B
+			private static final byte ID_P = 2;		// B
+			private static final byte ID_Q = 3;		// B
+			private static final byte ID_PQ = 4;		// B
+			private static final byte ID_DP1 = 5;		// B
+			private static final byte ID_DQ1 = 6;		// B
+			private static final short SW_REFERENCE_DATA_NOT_FOUND = 27272;		// S
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 11;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					sspush 256;
+					sconst_2;
+					invokestatic 9;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					aload_0;
+					sconst_5;
+					sconst_2;
+					invokestatic 9;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					aload_0;
+					sspush 288;
+					newarray 11;
+					putfield_a 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					aload_0;
+					sspush 640;
+					newarray 11;
+					putfield_a 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sconst_0;
+					putfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sconst_0;
+					putfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					sconst_0;
+					putfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					aconst_null;
+					putfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload_0;
+					bspush 12;
+					sconst_0;
+					invokestatic 10;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					invokestatic 12;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 13;		// ism/crypto/javacard/RSAApplet
+					dup;
+					invokespecial 14;		// ism/crypto/javacard/RSAApplet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 15;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					invokevirtual 16;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_2;
+				L3:	aload_1;
+					invokevirtual 18;		// setIncomingAndReceive()S
+					sstore_3;
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					stableswitch L13 48 55 L5 L6 L7 L8 L9 L10 L11 L12;
+				L5:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 19;		// ism/crypto/javacard/RSAApplet.genRsaKeyPair(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L6:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 20;		// ism/crypto/javacard/RSAApplet.getRsaPubKey(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L7:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 21;		// ism/crypto/javacard/RSAApplet.getRsaPriKey(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L8:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 22;		// ism/crypto/javacard/RSAApplet.setRsaPubKey(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L9:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 23;		// ism/crypto/javacard/RSAApplet.setRsaPriKey(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L10:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 24;		// ism/crypto/javacard/RSAApplet.rsaSign(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L11:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 25;		// ism/crypto/javacard/RSAApplet.rsaVerify(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L12:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 26;		// ism/crypto/javacard/RSAApplet.doRSACipher(Ljavacard/framework/APDU;S)V
+					goto L14;
+				L13:	sspush 27904;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	return;
+		}
+
+		.method private doRSACipher(Ljavacard/framework/APDU;S)V {
+			.stack 6;
+			.locals 8;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	aload_3;
+					sconst_2;
+					baload;
+					sstore 4;
+				L2:	sload 4;
+					sspush 128;
+					sand;
+					ifeq L4;
+				L3:	sconst_1;
+					goto L5;
+				L4:	sconst_0;
+				L5:	sstore 5;
+				L6:	sload 4;
+					sconst_1;
+					sand;
+					sconst_1;
+					if_scmpeq L8;
+				L7:	sconst_1;
+					goto L9;
+				L8:	sconst_0;
+				L9:	sstore 6;
+				L10:	sload 4;
+					bspush 8;
+					sand;
+					ifne L12;
+				L11:	sspush 1024;
+					goto L13;
+				L12:	sspush 2048;
+				L13:	sstore 7;
+				L14:	sload 4;
+					bspush 8;
+					sand;
+					ifne L16;
+				L15:	sspush 128;
+					goto L17;
+				L16:	sspush 256;
+				L17:	sstore 8;
+				L18:	sload_2;
+					ifgt L20;
+				L19:	sspush 26368;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L20:	sload 6;
+					ifeq L29;
+				L21:	sconst_4;
+					sload 7;
+					sconst_0;
+					invokestatic 28;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 29;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					astore 9;
+				L22:	aload 9;
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sconst_0;
+					sload 8;
+					invokeinterface 4 29 7;		// javacard/security/RSAPublicKey
+					aload 9;
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sload 8;
+					sconst_3;
+					invokeinterface 4 29 6;		// javacard/security/RSAPublicKey
+					aload_3;
+					sconst_3;
+					baload;
+					ifne L24;
+				L23:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload 9;
+					sconst_2;
+					invokevirtual 30;		// init(Ljavacard/security/Key;B)V
+				L24:	sload 5;
+					ifeq L26;
+				L25:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload_3;
+					sconst_5;
+					sload_2;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokevirtual 31;		// update([BSS[BS)S
+					pop;
+					goto_w L45;
+				L26:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload_3;
+					sconst_5;
+					sload_2;
+					aload_3;
+					sconst_0;
+					invokevirtual 32;		// doFinal([BSS[BS)S
+					sstore 10;
+				L27:	aload_1;
+					sconst_0;
+					sload 10;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+				L28:	goto_w L45;
+				L29:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L38;
+				L30:	sconst_5;
+					sload 7;
+					sconst_0;
+					invokestatic 28;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 34;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					astore 9;
+				L31:	aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sconst_0;
+					sload 8;
+					invokeinterface 4 34 7;		// javacard/security/RSAPrivateKey
+					aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 8;
+					sload 8;
+					invokeinterface 4 34 6;		// javacard/security/RSAPrivateKey
+					aload_3;
+					sconst_3;
+					baload;
+					ifne L33;
+				L32:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload 9;
+					sconst_1;
+					invokevirtual 30;		// init(Ljavacard/security/Key;B)V
+				L33:	sload 5;
+					ifeq L35;
+				L34:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload_3;
+					sconst_5;
+					sload_2;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokevirtual 31;		// update([BSS[BS)S
+					pop;
+					goto_w L45;
+				L35:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload_3;
+					sconst_5;
+					sload_2;
+					aload_3;
+					sconst_0;
+					invokevirtual 32;		// doFinal([BSS[BS)S
+					sstore 10;
+				L36:	aload_1;
+					sconst_0;
+					sload 10;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+				L37:	goto_w L45;
+				L38:	bspush 6;
+					sload 7;
+					sconst_0;
+					invokestatic 28;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					astore 9;
+				L39:	aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sconst_0;
+					sload 8;
+					sconst_2;
+					sdiv;
+					invokeinterface 4 35 11;		// javacard/security/RSAPrivateCrtKey
+					aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 8;
+					sconst_2;
+					sdiv;
+					sload 8;
+					sconst_2;
+					sdiv;
+					invokeinterface 4 35 13;		// javacard/security/RSAPrivateCrtKey
+					aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 8;
+					sload 8;
+					sconst_2;
+					sdiv;
+					invokeinterface 4 35 12;		// javacard/security/RSAPrivateCrtKey
+					aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 8;
+					sload 8;
+					sconst_2;
+					sdiv;
+					sadd;
+					sload 8;
+					sconst_2;
+					sdiv;
+					invokeinterface 4 35 9;		// javacard/security/RSAPrivateCrtKey
+					aload 9;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 8;
+					sconst_2;
+					smul;
+					sload 8;
+					sconst_2;
+					sdiv;
+					invokeinterface 4 35 10;		// javacard/security/RSAPrivateCrtKey
+					aload_3;
+					sconst_3;
+					baload;
+					ifne L41;
+				L40:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload 9;
+					sconst_1;
+					invokevirtual 30;		// init(Ljavacard/security/Key;B)V
+				L41:	sload 5;
+					ifeq L43;
+				L42:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload_3;
+					sconst_5;
+					sload_2;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokevirtual 31;		// update([BSS[BS)S
+					pop;
+					goto L45;
+				L43:	getfield_a_this 8;		// reference ism/crypto/javacard/RSAApplet.rsaCipher
+					aload_3;
+					sconst_5;
+					sload_2;
+					aload_3;
+					sconst_0;
+					invokevirtual 32;		// doFinal([BSS[BS)S
+					sstore 10;
+				L44:	aload_1;
+					sconst_0;
+					sload 10;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+				L45:	return;
+		}
+
+		.method private getRsaPubKey(Ljavacard/framework/APDU;S)V {
+			.stack 5;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	getfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					ifne L3;
+				L2:	sspush 27272;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	getfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sspush 160;
+					if_scmpgt L5;
+				L4:	sspush 128;
+					goto L6;
+				L5:	sspush 256;
+				L6:	sstore 4;
+				L7:	aload_3;
+					sconst_2;
+					baload;
+					stableswitch L11 0 1 L8 L9;
+				L8:	getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sconst_0;
+					aload_3;
+					sconst_0;
+					sload 4;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload 4;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+					goto L12;
+				L9:	getfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sload 4;
+					ssub;
+					sstore 5;
+				L10:	getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sload 4;
+					aload_3;
+					sconst_0;
+					sload 5;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload 5;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+					goto L12;
+				L11:	sspush 27270;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	return;
+		}
+
+		.method private getRsaPriKeyComponent(B[BS)S {
+			.stack 5;
+			.locals 3;
+
+				L0:	getfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					ifne L2;
+				L1:	sconst_0;
+					sreturn;
+				L2:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifeq L8;
+				L3:	getfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					sspush 320;
+					if_scmpne L6;
+				L4:	sspush 128;
+					sstore 4;
+				L5:	goto L12;
+				L6:	sspush 256;
+					sstore 4;
+				L7:	goto L12;
+				L8:	getfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					sspush 256;
+					if_scmpne L11;
+				L9:	sspush 128;
+					sstore 4;
+				L10:	goto L12;
+				L11:	sspush 256;
+					sstore 4;
+				L12:	sload_1;
+					stableswitch L48 0 6 L13 L18 L23 L28 L33 L38 L43;
+				L13:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifeq L15;
+				L14:	sconst_0;
+					sreturn;
+				L15:	sconst_0;
+					sstore 5;
+				L16:	sload 4;
+					sstore 6;
+				L17:	goto L49;
+				L18:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifeq L20;
+				L19:	sconst_0;
+					sreturn;
+				L20:	sload 4;
+					sstore 5;
+				L21:	sload 4;
+					sstore 6;
+				L22:	goto L49;
+				L23:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L25;
+				L24:	sconst_0;
+					sreturn;
+				L25:	sconst_0;
+					sstore 5;
+				L26:	sload 4;
+					sconst_2;
+					sdiv;
+					sstore 6;
+				L27:	goto L49;
+				L28:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L30;
+				L29:	sconst_0;
+					sreturn;
+				L30:	sload 4;
+					sconst_2;
+					sdiv;
+					sstore 5;
+				L31:	sload 4;
+					sconst_2;
+					sdiv;
+					sstore 6;
+				L32:	goto L49;
+				L33:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L35;
+				L34:	sconst_0;
+					sreturn;
+				L35:	sload 4;
+					sstore 5;
+				L36:	sload 4;
+					sconst_2;
+					sdiv;
+					sstore 6;
+				L37:	goto L49;
+				L38:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L40;
+				L39:	sconst_0;
+					sreturn;
+				L40:	sload 4;
+					sconst_2;
+					sdiv;
+					sconst_3;
+					smul;
+					sstore 5;
+				L41:	sload 4;
+					sconst_2;
+					sdiv;
+					sstore 6;
+				L42:	goto L49;
+				L43:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L45;
+				L44:	sconst_0;
+					sreturn;
+				L45:	sload 4;
+					sconst_2;
+					smul;
+					sstore 5;
+				L46:	sload 4;
+					sconst_2;
+					sdiv;
+					sstore 6;
+				L47:	goto L49;
+				L48:	sconst_0;
+					sreturn;
+				L49:	getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 5;
+					aload_2;
+					sload_3;
+					sload 6;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 6;
+					sreturn;
+		}
+
+		.method private getRsaPriKey(Ljavacard/framework/APDU;S)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	aload_3;
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					bspush 6;
+					if_scmple L3;
+				L2:	sspush 27270;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_3;
+					sconst_2;
+					baload;
+					aload_3;
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 4;
+				L4:	sload 4;
+					ifne L6;
+				L5:	sspush 27272;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_1;
+					sconst_0;
+					sload 4;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private setRsaPubKey(Ljavacard/framework/APDU;S)V {
+			.stack 6;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	aload_3;
+					sconst_3;
+					baload;
+					ifne L3;
+				L2:	sconst_0;
+					putfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					aload_3;
+					sconst_1;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					sconst_3;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					sconst_0;
+					invokestatic 38;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					goto L8;
+				L3:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					baload;
+					aload_3;
+					sconst_1;
+					baload;
+					if_scmpne L6;
+				L4:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_1;
+					baload;
+					bspush 127;
+					sand;
+					aload_3;
+					sconst_2;
+					baload;
+					bspush 127;
+					sand;
+					if_scmpne L6;
+				L5:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					aload_3;
+					sconst_3;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					ssub;
+					if_scmpeq L7;
+				L6:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27270;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+				L8:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sstore 4;
+				L9:	sload 4;
+					s2i;
+					sload_2;
+					s2i;
+					iadd;
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					arraylength;
+					s2i;
+					icmp;
+					ifle L11;
+				L10:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27264;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_3;
+					sconst_5;
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sload 4;
+					sload_2;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 4;
+					sload_2;
+					sadd;
+					sstore 4;
+					aload_3;
+					sconst_2;
+					baload;
+					sspush 128;
+					sand;
+					ifne L21;
+				L12:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_3;
+					sconst_2;
+					baload;
+					sconst_1;
+					sand;
+					ifne L14;
+				L13:	sspush 128;
+					goto L15;
+				L14:	sspush 256;
+				L15:	sstore 5;
+				L16:	sload 4;
+					s2i;
+					sload 5;
+					s2i;
+					iconst_3;
+					iadd;
+					icmp;
+					iflt L18;
+				L17:	sload 4;
+					s2i;
+					sload 5;
+					s2i;
+					bipush 32;
+					iadd;
+					icmp;
+					ifle L19;
+				L18:	sspush 27264;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L19:	sload 4;
+					putfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+				L20:	goto L22;
+				L21:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					sload 4;
+					invokestatic 38;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+				L22:	return;
+		}
+
+		.method private setRsaPriKey(Ljavacard/framework/APDU;S)V {
+			.stack 6;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	aload_3;
+					sconst_3;
+					baload;
+					ifne L3;
+				L2:	sconst_0;
+					putfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					aload_3;
+					sconst_1;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					sconst_3;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					sconst_0;
+					invokestatic 38;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					goto L8;
+				L3:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					baload;
+					aload_3;
+					sconst_1;
+					baload;
+					if_scmpne L6;
+				L4:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_1;
+					baload;
+					bspush 127;
+					sand;
+					aload_3;
+					sconst_2;
+					baload;
+					bspush 127;
+					sand;
+					if_scmpne L6;
+				L5:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					aload_3;
+					sconst_3;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					ssub;
+					if_scmpeq L7;
+				L6:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27270;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+				L8:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sstore 4;
+				L9:	sload 4;
+					s2i;
+					sload_2;
+					s2i;
+					iadd;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					arraylength;
+					s2i;
+					icmp;
+					ifle L11;
+				L10:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27264;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_3;
+					sconst_5;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 4;
+					sload_2;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 4;
+					sload_2;
+					sadd;
+					sstore 4;
+					aload_3;
+					sconst_2;
+					baload;
+					sspush 128;
+					sand;
+					ifne L27;
+				L12:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_3;
+					sconst_2;
+					baload;
+					sconst_1;
+					sand;
+					ifne L14;
+				L13:	sspush 128;
+					goto L15;
+				L14:	sspush 256;
+				L15:	sstore 5;
+				L16:	aload_3;
+					sconst_2;
+					baload;
+					bspush 64;
+					sand;
+					ifeq L18;
+				L17:	sconst_1;
+					goto L19;
+				L18:	sconst_0;
+				L19:	sstore 6;
+				L20:	sload 6;
+					ifeq L22;
+				L21:	sload 4;
+					s2i;
+					sload 5;
+					s2i;
+					iconst_2;
+					idiv;
+					iconst_5;
+					imul;
+					icmp;
+					ifne L24;
+				L22:	sload 6;
+					ifne L25;
+				L23:	sload 4;
+					s2i;
+					sload 5;
+					s2i;
+					iconst_2;
+					imul;
+					icmp;
+					ifeq L25;
+				L24:	sspush 27264;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L25:	sload 6;
+					putfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					sload 4;
+					putfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+				L26:	goto L28;
+				L27:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					sload 4;
+					invokestatic 38;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+				L28:	return;
+		}
+
+		.method private genRsaKeyPair(Ljavacard/framework/APDU;S)V {
+			.stack 4;
+			.locals 8;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	aload_3;
+					sconst_2;
+					baload;
+					ifne L3;
+				L2:	sspush 1024;
+					goto L4;
+				L3:	sspush 2048;
+				L4:	sstore 4;
+				L5:	aload_3;
+					sconst_3;
+					baload;
+					ifne L7;
+				L6:	sconst_1;
+					goto L8;
+				L7:	sconst_2;
+				L8:	sstore 5;
+				L9:	new 41;		// javacard/security/KeyPair
+					dup;
+					sload 5;
+					sload 4;
+					invokespecial 42;		// javacard/security/KeyPair.<init>(BS)V
+					astore 6;
+				L10:	sload_2;
+					bspush 32;
+					if_scmple L12;
+				L11:	sspush 26368;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	sload_2;
+					ifle L14;
+				L13:	aload 6;
+					invokevirtual 43;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 29;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					aload_3;
+					sconst_5;
+					sload_2;
+					invokeinterface 4 29 6;		// javacard/security/RSAPublicKey
+				L14:	aload 6;
+					invokevirtual 44;		// genKeyPair()V
+					invokestatic 45;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_0;
+					putfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sconst_0;
+					putfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					invokestatic 46;		// javacard/framework/JCSystem.commitTransaction()V
+					aload 6;
+					invokevirtual 43;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 29;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					astore 7;
+				L15:	sconst_0;
+					sstore 8;
+				L16:	sload 8;
+					aload 7;
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sload 8;
+					invokeinterface 3 29 5;		// javacard/security/RSAPublicKey
+					sadd;
+					sstore 8;
+					sload 8;
+					aload 7;
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sload 8;
+					invokeinterface 3 29 4;		// javacard/security/RSAPublicKey
+					sadd;
+					sstore 8;
+					sconst_0;
+					sstore 9;
+				L17:	sload 5;
+					sconst_1;
+					if_scmpne L21;
+				L18:	sconst_0;
+					putfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					aload 6;
+					invokevirtual 47;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 34;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					astore 10;
+				L19:	sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 34 5;		// javacard/security/RSAPrivateKey
+					sadd;
+					sstore 9;
+					sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 34 4;		// javacard/security/RSAPrivateKey
+					sadd;
+					sstore 9;
+				L20:	goto L23;
+				L21:	sconst_1;
+					putfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					aload 6;
+					invokevirtual 47;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					astore 10;
+				L22:	sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 35 6;		// javacard/security/RSAPrivateCrtKey
+					sadd;
+					sstore 9;
+					sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 35 8;		// javacard/security/RSAPrivateCrtKey
+					sadd;
+					sstore 9;
+					sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 35 7;		// javacard/security/RSAPrivateCrtKey
+					sadd;
+					sstore 9;
+					sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 35 4;		// javacard/security/RSAPrivateCrtKey
+					sadd;
+					sstore 9;
+					sload 9;
+					aload 10;
+					getfield_a_this 3;		// reference ism/crypto/javacard/RSAApplet.rsaPriKey
+					sload 9;
+					invokeinterface 3 35 5;		// javacard/security/RSAPrivateCrtKey
+					sadd;
+					sstore 9;
+				L23:	invokestatic 45;		// javacard/framework/JCSystem.beginTransaction()V
+					sload 8;
+					putfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sload 9;
+					putfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					invokestatic 46;		// javacard/framework/JCSystem.commitTransaction()V
+					invokestatic 12;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					return;
+		}
+
+		.method private rsaSign(Ljavacard/framework/APDU;S)V {
+			.stack 6;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	getfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					ifne L3;
+				L2:	sspush 27013;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_3;
+					sconst_2;
+					baload;
+					sspush 128;
+					sand;
+					ifeq L5;
+				L4:	sconst_1;
+					goto L6;
+				L5:	sconst_0;
+				L6:	sstore 4;
+				L7:	aload_3;
+					sconst_3;
+					baload;
+					ifne_w L18;
+				L8:	getfield_b_this 6;		// boolean ism/crypto/javacard/RSAApplet.isRSAPriKeyCRT
+					ifne L13;
+				L9:	sconst_5;
+					getfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					sconst_2;
+					sdiv;
+					bspush 8;
+					smul;
+					sconst_0;
+					invokestatic 28;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					astore 5;
+				L10:	aload_0;
+					sconst_0;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+				L11:	aload 5;
+					checkcast 0 34;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 34 7;		// javacard/security/RSAPrivateKey
+					aload_0;
+					sconst_1;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+					aload 5;
+					checkcast 0 34;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 34 6;		// javacard/security/RSAPrivateKey
+				L12:	goto_w L16;
+				L13:	bspush 6;
+					getfield_s_this 5;		// short ism/crypto/javacard/RSAApplet.rsaPriKeyLen
+					sconst_5;
+					sdiv;
+					bspush 16;
+					smul;
+					sconst_0;
+					invokestatic 28;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					astore 5;
+				L14:	aload_0;
+					sconst_2;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+				L15:	aload 5;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 35 11;		// javacard/security/RSAPrivateCrtKey
+					aload_0;
+					sconst_3;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+					aload 5;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 35 13;		// javacard/security/RSAPrivateCrtKey
+					aload_0;
+					sconst_5;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+					aload 5;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 35 9;		// javacard/security/RSAPrivateCrtKey
+					aload_0;
+					bspush 6;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+					aload 5;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 35 10;		// javacard/security/RSAPrivateCrtKey
+					aload_0;
+					sconst_4;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					invokespecial 37;		// ism/crypto/javacard/RSAApplet.getRsaPriKeyComponent(B[BS)S
+					sstore 6;
+					aload 5;
+					checkcast 0 35;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 6;
+					invokeinterface 4 35 12;		// javacard/security/RSAPrivateCrtKey
+				L16:	aload_0;
+					bspush 10;
+					sconst_0;
+					invokestatic 48;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+					putfield_a 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					invokestatic 12;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					getfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload 5;
+					sconst_1;
+					invokevirtual 49;		// init(Ljavacard/security/Key;B)V
+					aload_3;
+					sconst_1;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					sconst_3;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					invokestatic 12;		// javacard/framework/JCSystem.requestObjectDeletion()V
+				L17:	goto L23;
+				L18:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					baload;
+					aload_3;
+					sconst_1;
+					baload;
+					if_scmpne L21;
+				L19:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_1;
+					baload;
+					bspush 127;
+					sand;
+					aload_3;
+					sconst_2;
+					baload;
+					bspush 127;
+					sand;
+					if_scmpne L21;
+				L20:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					aload_3;
+					sconst_3;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					ssub;
+					if_scmpeq L22;
+				L21:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27270;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L22:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+				L23:	sload 4;
+					ifeq L25;
+				L24:	getfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload_3;
+					sconst_5;
+					sload_2;
+					invokevirtual 50;		// update([BSS)V
+					goto L27;
+				L25:	getfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload_3;
+					sconst_5;
+					sload_2;
+					aload_3;
+					sconst_0;
+					invokevirtual 51;		// sign([BSS[BS)S
+					sstore 5;
+				L26:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload 5;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+				L27:	return;
+		}
+
+		.method private rsaVerify(Ljavacard/framework/APDU;S)V {
+			.stack 7;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 17;		// getBuffer()[B
+					astore_3;
+				L1:	getfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					ifne L3;
+				L2:	sspush 27013;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_3;
+					sconst_2;
+					baload;
+					sspush 128;
+					sand;
+					ifeq L5;
+				L4:	sconst_1;
+					goto L6;
+				L5:	sconst_0;
+				L6:	sstore 4;
+				L7:	sconst_5;
+					sstore 5;
+				L8:	getfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sspush 256;
+					if_scmple L10;
+				L9:	sspush 256;
+					goto L11;
+				L10:	sspush 128;
+				L11:	sstore 6;
+				L12:	aload_3;
+					sconst_3;
+					baload;
+					ifne L16;
+				L13:	sconst_4;
+					sload 6;
+					bspush 8;
+					smul;
+					sconst_0;
+					invokestatic 28;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					astore 7;
+				L14:	aload 7;
+					checkcast 0 29;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sconst_0;
+					sload 6;
+					invokeinterface 4 29 7;		// javacard/security/RSAPublicKey
+					aload 7;
+					checkcast 0 29;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 2;		// reference ism/crypto/javacard/RSAApplet.rsaPubKey
+					sload 6;
+					getfield_s_this 4;		// short ism/crypto/javacard/RSAApplet.rsaPubKeyLen
+					sload 6;
+					ssub;
+					invokeinterface 4 29 6;		// javacard/security/RSAPublicKey
+					aload_0;
+					bspush 10;
+					sconst_0;
+					invokestatic 48;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+					putfield_a 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					invokestatic 12;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					getfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload 7;
+					sconst_2;
+					invokevirtual 49;		// init(Ljavacard/security/Key;B)V
+					aload_3;
+					sconst_1;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					sconst_3;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					sconst_0;
+					invokestatic 38;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					invokestatic 12;		// javacard/framework/JCSystem.requestObjectDeletion()V
+				L15:	goto L21;
+				L16:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					baload;
+					aload_3;
+					sconst_1;
+					baload;
+					if_scmpne L19;
+				L17:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_1;
+					baload;
+					bspush 127;
+					sand;
+					aload_3;
+					sconst_2;
+					baload;
+					bspush 127;
+					sand;
+					if_scmpne L19;
+				L18:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					aload_3;
+					sconst_3;
+					baload;
+					sspush 255;
+					sand;
+					sconst_1;
+					ssub;
+					if_scmpeq L20;
+				L19:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27270;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L20:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_2;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+				L21:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					invokestatic 40;		// javacard/framework/Util.getShort([BS)S
+					sstore 7;
+				L22:	sload 7;
+					sload 6;
+					if_scmpge L27;
+				L23:	sload 6;
+					sload 7;
+					ssub;
+					sstore 8;
+				L24:	sload 8;
+					sload_2;
+					if_scmple L26;
+				L25:	sload_2;
+					sstore 8;
+				L26:	aload_3;
+					sconst_5;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sload 7;
+					sload 8;
+					invokestatic 36;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 7;
+					sload 8;
+					sadd;
+					sstore 7;
+					sload_2;
+					sload 8;
+					ssub;
+					sstore_2;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_3;
+					sload 7;
+					invokestatic 38;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sload 5;
+					sload 8;
+					sadd;
+					sstore 5;
+				L27:	sload 4;
+					ifeq L30;
+				L28:	sload_2;
+					ifle L37;
+				L29:	getfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload_3;
+					sload 5;
+					sload_2;
+					invokevirtual 50;		// update([BSS)V
+					goto L37;
+				L30:	sload 7;
+					sload 6;
+					if_scmpeq L32;
+				L31:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 27264;
+					invokestatic 27;		// javacard/framework/ISOException.throwIt(S)V
+				L32:	getfield_a_this 7;		// reference ism/crypto/javacard/RSAApplet.rsaSignature
+					aload_3;
+					sload 5;
+					sload_2;
+					getfield_a_this 0;		// reference ism/crypto/javacard/RSAApplet.tempBuffer
+					sconst_0;
+					sload 7;
+					invokevirtual 52;		// verify([BSS[BSS)Z
+					sstore 8;
+				L33:	getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					sconst_0;
+					getfield_a_this 1;		// reference ism/crypto/javacard/RSAApplet.flags
+					arraylength;
+					sconst_0;
+					invokestatic 39;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_3;
+					sconst_0;
+					sload 8;
+					ifeq L35;
+				L34:	sconst_1;
+					goto L36;
+				L35:	sconst_0;
+				L36:	bastore;
+					aload_1;
+					sconst_0;
+					sconst_1;
+					invokevirtual 33;		// setOutgoingAndSend(SS)V
+				L37:	return;
+		}
+
+	}
+
+}

@@ -1,0 +1,12 @@
+Digest for ism/crypto/javacard/javacard/Debug.cap		[SHA-256: 858439e4b668820abd457432fd14ec749d6600df6ba89f290f9025e4594f4e04]
+Digest for ism/crypto/javacard/javacard/RefLocation.cap		[SHA-256: 2b1847c51685e2e19c8635bdaede35b1dbdadc0f8b1733aa485526232461a5b8]
+Digest for ism/crypto/javacard/javacard/ConstantPool.cap		[SHA-256: 9c85a19183f43b016c3505d40c709b8f8ef4bf381e96237b0ee1d8b11be38639]
+Digest for ism/crypto/javacard/javacard/Method.cap		[SHA-256: 6e08e1ae5bf057fb300a3b89aedfb6ce5746c28dd1fd178fab23564d40faee63]
+Digest for ism/crypto/javacard/javacard/Applet.cap		[SHA-256: fa0200e2e0e50c059c0c6dd35996b16a6ec145c005bf7b6a538a50cb2689a993]
+Digest for ism/crypto/javacard/javacard/Class.cap		[SHA-256: 92b348b139f2225dd28b6c7363456300ee58abe31eac11c305fb0d680a543cd0]
+Digest for ism/crypto/javacard/javacard/Header.cap		[SHA-256: 7c765d2d434dab2b884e02ee5c49ada35ebc4255ced6b216be8b09368626eb33]
+Digest for ism/crypto/javacard/javacard/Import.cap		[SHA-256: 6d4300b4ab5ac52fc25af692bd9c0971faa24d413735febaaff273371a7e6562]
+Digest for ism/crypto/javacard/javacard/StaticField.cap		[SHA-256: 5863e9740af5fb905922380b2aa88309a16a285dd3412417ae8af941327901ee]
+Digest for ism/crypto/javacard/javacard/Directory.cap		[SHA-256: e75570e37938dd9d9a19b8754ca5e25568bdd53dfe3b6c1812d4b33c71c50462]
+Digest for ism/crypto/javacard/javacard/Descriptor.cap		[SHA-256: 4bbdda97830d0f28399e60e8efa027b441cb06cba58e905c243e5ed8c920b6f5]
+Verification completed with 0 warnings and 0 errors.
